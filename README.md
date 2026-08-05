@@ -1,87 +1,94 @@
-# 🩺 AI Medical Assistant Frontend
+# 🏥 AI Medical Assistant Frontend (Next.js + TypeScript)
 
-A modern medical AI chatbot interface built with **Next.js**, **React**, and **TypeScript**. The frontend communicates with a FastAPI backend to provide AI-powered medical question answering using Retrieval-Augmented Generation (RAG).
+A modern, responsive medical AI interface built with **Next.js**, **React**, **TypeScript**, and **Tailwind CSS**. 
 
-## 🚀 Features
+The frontend pairs with the FastAPI backend to deliver a seamless multi-tenant medical AI application with JWT authentication, document uploads, real-time medical chat, and source citation inspection.
 
-* 💬 Interactive AI chat interface
-* 📄 PDF-based medical knowledge retrieval
-* ⚡ Fast and responsive UI
-* 📚 Markdown response rendering
-* 📋 Copy AI responses
-* 🔄 Auto-scrolling chat
-* ⏳ Typing indicator
-* 🎨 Clean, modern interface
+---
+
+## ⚡ Key Features
+
+* 🔐 **Authentication & Authorization**: Dedicated Login and Signup pages integrated with JWT Bearer Token state management.
+* 🛡️ **Axios Interceptors**: Automatic Bearer token header injection and automatic session timeout handling (`401` redirect).
+* 💬 **Interactive Chat UI**: Markdown response rendering for medical headings, lists, and bold text.
+* 📄 **Document Management**: Drag-and-drop PDF uploader and active document list sidebar.
+* 🔍 **Source Citation Inspector**: View exact document names, page numbers, and snippet passages referenced by the AI.
+* 🌐 **Vercel Ready**: Pre-configured environment variable support (`NEXT_PUBLIC_API_URL`) for Vercel deployment.
+
+---
 
 ## 🛠️ Tech Stack
 
-* Next.js
-* React
-* TypeScript
-* Tailwind CSS
-* Fetch API
+| Category | Technology |
+| :--- | :--- |
+| **Framework** | Next.js (App Router), React, TypeScript |
+| **Styling** | Tailwind CSS |
+| **HTTP Client** | Axios (with Interceptors) |
+| **Icons & UI** | Lucide React |
+| **Deployment** | Vercel |
 
-## 📁 Project Structure
+---
 
+## 📂 Project Structure
+
+```text
+frontend/
+├── app/
+│   ├── page.tsx          # Main Chat Dashboard UI
+│   ├── login/
+│   │   └── page.tsx      # User Login Page
+│   └── signup/
+│   │   └── page.tsx      # User Registration Page
+├── components/
+│   ├── ChatWindow.tsx    # Interactive message container
+│   ├── Header.tsx        # Top navigation & profile info
+│   ├── Sidebar.tsx       # Document list & PDF uploader
+│   └── SourceModal.tsx   # Citations inspector modal
+├── lib/
+│   └── api.ts            # Axios instance with JWT interceptors
+├── public/               # Static assets & icons
+└── types/                # TypeScript interface definitions
 ```
-app/
-components/
-lib/
-public/
-types/
-```
 
-## ⚙️ Installation
+---
 
-Clone the repository:
+## 🚀 Local Quickstart
 
+### 1. Clone the repository
 ```bash
 git clone https://github.com/zohebqureshimz-pixel/medical-ai-frontend.git
+cd medical-ai-frontend
 ```
 
-Install dependencies:
-
+### 2. Install Dependencies
 ```bash
 npm install
 ```
 
-Run the development server:
+### 3. Configure Environment Variables
+Create `.env.local` in the root directory:
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
 
+### 4. Run Development Server
 ```bash
 npm run dev
 ```
+Open `http://localhost:3000` in your browser.
 
-Open:
+---
 
-```
-http://localhost:3000
-```
+## 🌐 Vercel Deployment
 
-## 🔗 Backend
+1. Import repository to [Vercel](https://vercel.com).
+2. Set Environment Variable:
+   - `NEXT_PUBLIC_API_URL` = `https://medical-ai-backend.onrender.com` (Your Render Backend URL)
+3. Deploy!
 
-The frontend connects to the FastAPI backend available at:
-
-https://github.com/zohebqureshimz-pixel/medical-ai-backend
-
-## 📸 Screenshots
-
-Add screenshots of:
-
-* Home screen
-* Chat interface
-* AI response
-* PDF upload
-
-## 🔮 Future Improvements
-
-* User authentication
-* Conversation history
-* Dark mode
-* Streaming AI responses
-* Source citations
-* Multi-document support
+---
 
 ## 👨‍💻 Author
 
-Zoheb Qureshi
-
+**Zoheb Qureshi**  
+GitHub: [@zohebqureshimz-pixel](https://github.com/zohebqureshimz-pixel)
