@@ -2,6 +2,7 @@
 
 import { FaUpload } from "react-icons/fa";
 import { useRef, useState } from "react";
+import axios from "axios";
 import api from "@/lib/api";
 import { toast } from "react-toastify";
 
@@ -26,21 +27,24 @@ export default function UploadButton() {
     try {
       const response = await api.post(
         "/upload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
+        formData
       );
 
-      toast.success("PDF Indexed Successfully!");
+      toast.success(response.data.message || "PDF indexed successfully!");
     } catch (error) {
       console.error(error);
-      toast.error("Upload Failed");
+      const message = axios.isAxiosError(error)
+        ? error.response?.data?.detail ||
+          error.response?.data?.error ||
+          (error.response
+            ? `Upload failed (${error.response.status}).`
+            : "Cannot reach the server. Please try again in a moment.")
+        : "Upload failed. Please try again.";
+      toast.error(message);
+    } finally {
+      setUploading(false);
+      event.target.value = "";
     }
-
-    setUploading(false);
   }
 
   return (
