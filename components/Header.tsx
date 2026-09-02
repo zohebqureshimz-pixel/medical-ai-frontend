@@ -20,7 +20,7 @@ export default function Header() {
 
         <div>
           <h1 className="text-xl font-bold">
-            Medical AI Assistant
+            MedMind AI 
           </h1>
 
           <p className="text-sm text-blue-100">
